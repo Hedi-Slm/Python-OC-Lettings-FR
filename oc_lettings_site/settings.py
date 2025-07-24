@@ -1,6 +1,8 @@
 import os
-
 from pathlib import Path
+import sentry_sdk
+from sentry_sdk.integrations.django import DjangoIntegration
+from decouple import config
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -113,4 +115,63 @@ USE_TZ = True
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [BASE_DIR / "static",]
+STATICFILES_DIRS = [BASE_DIR / "static"]
+
+# Sentry configuration
+
+SENTRY_DSN = config('SENTRY_DSN', default=None)
+
+print(f"SENTRY_DSN: {SENTRY_DSN}")
+
+sentry_sdk.init(
+    dsn=SENTRY_DSN,
+    integrations=[DjangoIntegration()],
+    traces_sample_rate=1.0,
+    send_default_pii=True
+)
+
+# Logging configuration
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format': '{levelname} {asctime} {module} {message}',
+            'style': '{',
+        },
+        'simple': {
+            'format': '{levelname}: {message}',
+            'style': '{',
+        },
+    },
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+            'formatter': 'verbose',
+        },
+        'sentry': {
+            'class': 'sentry_sdk.integrations.logging.EventHandler',
+            'level': 'ERROR',
+        },
+    },
+    'root': {
+        'level': 'WARNING',
+        'handlers': ['console', 'sentry'],
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['console', 'sentry'],
+            'level': 'INFO',
+            'propagate': True,
+        },
+        'lettings': {
+            'handlers': ['console'],
+            'level': 'INFO',
+        },
+        'profiles': {
+            'handlers': ['console'],
+            'level': 'INFO',
+        },
+    },
+}
