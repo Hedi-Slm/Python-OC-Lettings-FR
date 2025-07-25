@@ -1,5 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .models import Profile
+import logging
+
+logger = logging.getLogger(__name__)
 
 
 def index(request):
@@ -30,6 +33,10 @@ def profile(request, username):
         HttpResponse: The rendered HTML page displaying the profile page for the specified user.
     """
 
-    profile = Profile.objects.get(user__username=username)
-    context = {'profile': profile}
-    return render(request, 'profiles/profile.html', context)
+    try:
+        profile = get_object_or_404(Profile, user__username=username)
+        context = {'profile': profile}
+        return render(request, 'profiles/profile.html', context)
+    except Exception as e:
+        logger.exception(f"Error loading profile '{username}': {e}")
+        raise

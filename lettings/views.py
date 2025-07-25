@@ -1,5 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .models import Letting
+import logging
+
+logger = logging.getLogger(__name__)
 
 
 def index(request):
@@ -30,9 +33,10 @@ def letting(request, letting_id):
         HttpResponse: The rendered HTML page displaying the details of the letting.
     """
 
-    letting = Letting.objects.get(id=letting_id)
-    context = {
-        'title': letting.title,
-        'address': letting.address,
-    }
-    return render(request, 'lettings/letting.html', context)
+    try:
+        letting = get_object_or_404(Letting, id=letting_id)
+        context = {'title': letting.title, 'address': letting.address}
+        return render(request, 'lettings/letting.html', context)
+    except Exception as e:
+        logger.exception(f"Error loading letting {letting_id}: {e}")
+        raise
