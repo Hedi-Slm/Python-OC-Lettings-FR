@@ -41,4 +41,3 @@ class TestLettingsUrls:
             resolver = resolve(f'/lettings/{test_id}/')
             assert resolver.view_name == 'lettings:letting'
             assert resolver.kwargs == {'letting_id': test_id}
-

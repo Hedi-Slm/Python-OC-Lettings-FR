@@ -9,7 +9,8 @@ class TestProfilesUrls:
         assert reverse("profiles:index") == "/profiles/"
 
     def test_profile_url_reverse(self, profile_john):
-        assert reverse("profiles:profile", kwargs={"username": "john_doe"}) == "/profiles/john_doe/"
+        assert reverse("profiles:profile",
+                       kwargs={"username": "john_doe"}) == "/profiles/john_doe/"
 
     def test_index_url_resolves_to_view(self):
         resolver = resolve("/profiles/")

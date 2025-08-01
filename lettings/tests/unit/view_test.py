@@ -27,12 +27,11 @@ class TestIndexView:
         assert 'lettings_list' in response.context
         assert len(lettings_list) == len(multiple_lettings)
 
-        for letting in multiple_lettings:
-            assert letting in lettings_list
-            assert letting.title.encode() in response.content
+        for let in multiple_lettings:
+            assert let in lettings_list
+            assert let.title.encode() in response.content
 
         assert b'No lettings are available.' not in response.content
-
 
 
 @pytest.mark.django_db
