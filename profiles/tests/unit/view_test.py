@@ -1,5 +1,4 @@
 import pytest
-from django.urls import reverse
 from profiles.views import index, profile
 
 
