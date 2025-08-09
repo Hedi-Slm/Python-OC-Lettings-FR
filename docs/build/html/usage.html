@@ -1,0 +1,264 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Usage Guide &mdash; OC Lettings Site 1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=29a6c3e3"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Deployment Procedures and Application Management" href="deployment.html" />
+    <link rel="prev" title="Programming Interfaces" href="interfaces.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            OC Lettings Site
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="description.html">Project Description</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation Instructions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick Start Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="technologies.html">Technologies and Programming Languages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="database.html">Database Structure and Data Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interfaces.html">Programming Interfaces</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Usage Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#user-types">User Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#primary-use-cases">Primary Use Cases</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#browsing-rental-listings">1. Browsing rental listings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#browsing-user-profiles">2. Browsing user profiles</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#content-administration">3. Content administration</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="deployment.html">Deployment Procedures and Application Management</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">OC Lettings Site</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Usage Guide</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/usage.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="usage-guide">
+<h1>Usage Guide<a class="headerlink" href="#usage-guide" title="Link to this heading"></a></h1>
+<p>This section describes the main use cases of the OC Lettings Site application, with practical examples for each user type.</p>
+<section id="user-types">
+<h2>User Types<a class="headerlink" href="#user-types" title="Link to this heading"></a></h2>
+<p>The application targets three main user types:</p>
+<dl class="simple">
+<dt><strong>Any visitors</strong></dt><dd><p>Can browse public lettings and profiles.</p>
+</dd>
+<dt><strong>Administrators</strong></dt><dd><p>Have access to the admin interface to manage content.</p>
+</dd>
+</dl>
+</section>
+<section id="primary-use-cases">
+<h2>Primary Use Cases<a class="headerlink" href="#primary-use-cases" title="Link to this heading"></a></h2>
+<section id="browsing-rental-listings">
+<h3>1. Browsing rental listings<a class="headerlink" href="#browsing-rental-listings" title="Link to this heading"></a></h3>
+<p><strong>Goal:</strong> Allow users to discover available rental properties</p>
+<p><strong>Steps:</strong></p>
+<ol class="arabic simple">
+<li><p><strong>Open home page</strong></p>
+<ul class="simple">
+<li><p>URL: <code class="docutils literal notranslate"><span class="pre">http://localhost:8000/</span></code> or website url</p></li>
+<li><p>Action: Home page shows navigation links</p></li>
+</ul>
+</li>
+<li><p><strong>Go to lettings</strong></p>
+<ul class="simple">
+<li><p>Click the “Lettings” link</p></li>
+<li><p>Destination URL: <code class="docutils literal notranslate"><span class="pre">http://localhost:8000/lettings/</span></code></p></li>
+</ul>
+</li>
+<li><p><strong>View the list</strong></p>
+<ul class="simple">
+<li><p>All available lettings are displayed</p></li>
+<li><p>Each letting shows a title</p></li>
+<li><p>Clickable links lead to detail pages</p></li>
+</ul>
+</li>
+<li><p><strong>View letting details</strong></p>
+<ul class="simple">
+<li><p>Click a specific letting</p></li>
+<li><p>URL: <code class="docutils literal notranslate"><span class="pre">http://localhost:8000/lettings/&lt;id&gt;/</span></code></p></li>
+<li><p>Display: Full title and detailed address</p></li>
+</ul>
+</li>
+</ol>
+<p><strong>Navigation example:</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Home → Lettings → Lettings list → Letting detail
+</pre></div>
+</div>
+</section>
+<section id="browsing-user-profiles">
+<h3>2. Browsing user profiles<a class="headerlink" href="#browsing-user-profiles" title="Link to this heading"></a></h3>
+<p><strong>Goal:</strong> Allow discovery of user profiles on the platform</p>
+<p><strong>Steps:</strong></p>
+<ol class="arabic simple">
+<li><p><strong>From the home page</strong></p>
+<ul class="simple">
+<li><p>Click the “Profiles” link</p></li>
+<li><p>Destination URL: <code class="docutils literal notranslate"><span class="pre">http://localhost:8000/profiles/</span></code></p></li>
+</ul>
+</li>
+<li><p><strong>View the profiles list</strong></p>
+<ul class="simple">
+<li><p>All user profiles are listed</p></li>
+<li><p>Usernames are links</p></li>
+</ul>
+</li>
+<li><p><strong>View profile detail</strong></p>
+<ul class="simple">
+<li><p>Click a username</p></li>
+<li><p>URL: <code class="docutils literal notranslate"><span class="pre">http://localhost:8000/profiles/&lt;username&gt;/</span></code></p></li>
+<li><p>Display: Profile information</p></li>
+</ul>
+</li>
+</ol>
+<p><strong>Navigation example:</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Home → Profiles → Profiles list → Profile detail
+</pre></div>
+</div>
+</section>
+<section id="content-administration">
+<h3>3. Content administration<a class="headerlink" href="#content-administration" title="Link to this heading"></a></h3>
+<p><strong>Goal:</strong> Full management of application data</p>
+<p><strong>Actors:</strong> Administrators only</p>
+<p><strong>Prerequisites:</strong> Superuser account created</p>
+<p><strong>Access steps:</strong></p>
+<ol class="arabic simple">
+<li><p><strong>Log in to admin interface</strong></p>
+<ul class="simple">
+<li><p>URL: <code class="docutils literal notranslate"><span class="pre">http://localhost:8000/admin/</span></code></p></li>
+<li><p>Enter admin credentials</p></li>
+<li><p>Authenticate to access the dashboard</p></li>
+</ul>
+</li>
+<li><p><strong>Navigate the admin</strong></p>
+<ul class="simple">
+<li><p>Main dashboard with available sections</p></li>
+</ul>
+</li>
+</ol>
+<p>Address management:</p>
+<ul class="simple">
+<li><p><strong>Addresses list:</strong>
+* Display: number, street, city, state, zip code
+* Actions: Add, edit, delete</p></li>
+<li><p><strong>Create/edit address:</strong>
+* Form with field validations
+* Constraints: number (max 9999), state (2 chars), etc.
+* Save with integrity checks</p></li>
+</ul>
+<p>Lettings management:</p>
+<ul class="simple">
+<li><p><strong>Lettings list:</strong>
+* Display: title and associated address
+* Actions: Add, edit, delete</p></li>
+<li><p><strong>Create/edit letting:</strong>
+* Select an existing address (OneToOne relation)
+* Enter title (max 256 characters)
+* Validate relations</p></li>
+</ul>
+<p>Profiles management:</p>
+<ul class="simple">
+<li><p><strong>Profiles list:</strong>
+* Display: user and favorite city
+* Actions: Add, edit, delete</p></li>
+<li><p><strong>Create/edit profile:</strong>
+* Associate with an existing Django user
+* Favorite city optional</p></li>
+</ul>
+<p>User management:</p>
+<ul class="simple">
+<li><p>Standard Django interface for:
+* Creating user accounts
+* Managing permissions and groups
+* Activating/deactivating users
+* Resetting passwords</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="interfaces.html" class="btn btn-neutral float-left" title="Programming Interfaces" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="deployment.html" class="btn btn-neutral float-right" title="Deployment Procedures and Application Management" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Hedi.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

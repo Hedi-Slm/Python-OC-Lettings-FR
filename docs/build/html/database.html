@@ -1,0 +1,290 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Database Structure and Data Models &mdash; OC Lettings Site 1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=29a6c3e3"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Programming Interfaces" href="interfaces.html" />
+    <link rel="prev" title="Technologies and Programming Languages" href="technologies.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            OC Lettings Site
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="description.html">Project Description</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation Instructions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick Start Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="technologies.html">Technologies and Programming Languages</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Database Structure and Data Models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#database-architecture">Database Architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#models-in-the-lettings-app">Models in the <code class="docutils literal notranslate"><span class="pre">lettings</span></code> app</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#address-model">Address Model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#letting-model">Letting Model</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#models-in-the-profiles-app">Models in the <code class="docutils literal notranslate"><span class="pre">profiles</span></code> app</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#profile-model">Profile Model</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#model-relations">Model Relations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#relationship-descriptions">Relationship descriptions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="interfaces.html">Programming Interfaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="deployment.html">Deployment Procedures and Application Management</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">OC Lettings Site</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Database Structure and Data Models</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/database.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="database-structure-and-data-models">
+<h1>Database Structure and Data Models<a class="headerlink" href="#database-structure-and-data-models" title="Link to this heading"></a></h1>
+<p>This section describes the SQLite database structure and the Django models used in the OC Lettings Site application.</p>
+<section id="database-architecture">
+<h2>Database Architecture<a class="headerlink" href="#database-architecture" title="Link to this heading"></a></h2>
+<p>The application uses SQLite with a simple, effective relational schema. The database is organized around three Django apps:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">oc_lettings_site</span></code> — Main application (no specific models)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">lettings</span></code> — Models related to rental properties (addresses and lettings)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">profiles</span></code> — Models related to user profiles (profiles)</p></li>
+</ul>
+</section>
+<section id="models-in-the-lettings-app">
+<h2>Models in the <code class="docutils literal notranslate"><span class="pre">lettings</span></code> app<a class="headerlink" href="#models-in-the-lettings-app" title="Link to this heading"></a></h2>
+<section id="address-model">
+<h3>Address Model<a class="headerlink" href="#address-model" title="Link to this heading"></a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">Address</span></code> model represents a full physical address.</p>
+<p><strong>Model structure:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Address</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">number</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">PositiveIntegerField</span><span class="p">(</span><span class="n">validators</span><span class="o">=</span><span class="p">[</span><span class="n">MaxValueValidator</span><span class="p">(</span><span class="mi">9999</span><span class="p">)])</span>
+    <span class="n">street</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">64</span><span class="p">)</span>
+    <span class="n">city</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">64</span><span class="p">)</span>
+    <span class="n">state</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">validators</span><span class="o">=</span><span class="p">[</span><span class="n">MinLengthValidator</span><span class="p">(</span><span class="mi">2</span><span class="p">)])</span>
+    <span class="n">zip_code</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">PositiveIntegerField</span><span class="p">(</span><span class="n">validators</span><span class="o">=</span><span class="p">[</span><span class="n">MaxValueValidator</span><span class="p">(</span><span class="mi">99999</span><span class="p">)])</span>
+    <span class="n">country_iso_code</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">validators</span><span class="o">=</span><span class="p">[</span><span class="n">MinLengthValidator</span><span class="p">(</span><span class="mi">3</span><span class="p">)])</span>
+</pre></div>
+</div>
+<p><strong>Field details:</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">number</span></code> (PositiveIntegerField)</dt><dd><p>Street or building number</p>
+<ul class="simple">
+<li><p>Type: Positive integer</p></li>
+<li><p>Validation: Maximum 9999</p></li>
+<li><p>Required: Yes</p></li>
+</ul>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">street</span></code> (CharField)</dt><dd><p>Street name, avenue, boulevard, etc.</p>
+<ul class="simple">
+<li><p>Type: String</p></li>
+<li><p>Max length: 64 characters</p></li>
+<li><p>Required: Yes</p></li>
+</ul>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">city</span></code> (CharField)</dt><dd><p>City name</p>
+<ul class="simple">
+<li><p>Type: String</p></li>
+<li><p>Max length: 64 characters</p></li>
+<li><p>Required: Yes</p></li>
+</ul>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">state</span></code> (CharField)</dt><dd><p>State or region code (abbreviated)</p>
+<ul class="simple">
+<li><p>Type: String</p></li>
+<li><p>Length: Exactly 2 characters</p></li>
+<li><p>Validation: Minimum length 2</p></li>
+<li><p>Example: “NY”, “CA”, “TX”</p></li>
+<li><p>Required: Yes</p></li>
+</ul>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">zip_code</span></code> (PositiveIntegerField)</dt><dd><p>Postal code</p>
+<ul class="simple">
+<li><p>Type: Positive integer</p></li>
+<li><p>Validation: Maximum 99999</p></li>
+<li><p>Required: Yes</p></li>
+</ul>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">country_iso_code</span></code> (CharField)</dt><dd><p>Country code in ISO format</p>
+<ul class="simple">
+<li><p>Type: String</p></li>
+<li><p>Length: Exactly 3 characters</p></li>
+<li><p>Validation: Minimum length 3</p></li>
+<li><p>Example: “USA”, “CAN”, “FRA”</p></li>
+<li><p>Required: Yes</p></li>
+</ul>
+</dd>
+</dl>
+</section>
+<section id="letting-model">
+<h3>Letting Model<a class="headerlink" href="#letting-model" title="Link to this heading"></a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">Letting</span></code> model represents a rental listing.</p>
+<p><strong>Model structure:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Letting</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">title</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">256</span><span class="p">)</span>
+    <span class="n">address</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">OneToOneField</span><span class="p">(</span><span class="n">Address</span><span class="p">,</span> <span class="n">on_delete</span><span class="o">=</span><span class="n">models</span><span class="o">.</span><span class="n">CASCADE</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Field details:</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">title</span></code> (CharField)</dt><dd><p>Descriptive title of the rental listing</p>
+<ul class="simple">
+<li><p>Type: String</p></li>
+<li><p>Max length: 256 characters</p></li>
+<li><p>Required: Yes</p></li>
+</ul>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">address</span></code> (OneToOneField)</dt><dd><p>Relation to the <code class="docutils literal notranslate"><span class="pre">Address</span></code> model</p>
+<ul class="simple">
+<li><p>Type: OneToOne relation</p></li>
+<li><p>Target model: <code class="docutils literal notranslate"><span class="pre">Address</span></code></p></li>
+<li><p>On delete: <code class="docutils literal notranslate"><span class="pre">CASCADE</span></code></p></li>
+<li><p>Required: Yes</p></li>
+</ul>
+</dd>
+</dl>
+</section>
+</section>
+<section id="models-in-the-profiles-app">
+<h2>Models in the <code class="docutils literal notranslate"><span class="pre">profiles</span></code> app<a class="headerlink" href="#models-in-the-profiles-app" title="Link to this heading"></a></h2>
+<section id="profile-model">
+<h3>Profile Model<a class="headerlink" href="#profile-model" title="Link to this heading"></a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">Profile</span></code> model extends Django’s user information.</p>
+<p><strong>Model structure:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Profile</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">user</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">OneToOneField</span><span class="p">(</span><span class="n">User</span><span class="p">,</span> <span class="n">on_delete</span><span class="o">=</span><span class="n">models</span><span class="o">.</span><span class="n">CASCADE</span><span class="p">)</span>
+    <span class="n">favorite_city</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span> <span class="n">blank</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Field details:</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">user</span></code> (OneToOneField)</dt><dd><p>Relation to Django’s <code class="docutils literal notranslate"><span class="pre">User</span></code> model</p>
+<ul class="simple">
+<li><p>Type: OneToOne relation</p></li>
+<li><p>Target model: <code class="docutils literal notranslate"><span class="pre">django.contrib.auth.models.User</span></code></p></li>
+<li><p>On delete: <code class="docutils literal notranslate"><span class="pre">CASCADE</span></code></p></li>
+<li><p>Required: Yes</p></li>
+</ul>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">favorite_city</span></code> (CharField)</dt><dd><p>User’s favorite city</p>
+<ul class="simple">
+<li><p>Type: String</p></li>
+<li><p>Max length: 64 characters</p></li>
+<li><p>Optional: <code class="docutils literal notranslate"><span class="pre">blank=True</span></code></p></li>
+<li><p>May be empty</p></li>
+</ul>
+</dd>
+</dl>
+</section>
+</section>
+<section id="model-relations">
+<h2>Model Relations<a class="headerlink" href="#model-relations" title="Link to this heading"></a></h2>
+<section id="relationship-descriptions">
+<h3>Relationship descriptions<a class="headerlink" href="#relationship-descriptions" title="Link to this heading"></a></h3>
+<dl class="simple">
+<dt><strong>User ↔ Profile</strong></dt><dd><p>OneToOne relation between Django’s standard User model and the custom Profile model.</p>
+<ul class="simple">
+<li><p>Each Django user can have one profile</p></li>
+<li><p>Each profile is linked to exactly one user</p></li>
+<li><p>Cascade delete: deleting a user removes the profile</p></li>
+</ul>
+</dd>
+<dt><strong>Address ↔ Letting</strong></dt><dd><p>OneToOne relation between Address and Letting.</p>
+<ul class="simple">
+<li><p>Each letting has one address</p></li>
+<li><p>Each address is used by exactly one letting</p></li>
+<li><p>Cascade delete: deleting an address removes the letting</p></li>
+</ul>
+</dd>
+</dl>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="technologies.html" class="btn btn-neutral float-left" title="Technologies and Programming Languages" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="interfaces.html" class="btn btn-neutral float-right" title="Programming Interfaces" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Hedi.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

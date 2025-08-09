@@ -1,0 +1,282 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Installation Instructions &mdash; OC Lettings Site 1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=29a6c3e3"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Quick Start Guide" href="quickstart.html" />
+    <link rel="prev" title="Project Description" href="description.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            OC Lettings Site
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="description.html">Project Description</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Installation Instructions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#local-installation">Local Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#step-1-clone-the-repository">Step 1: Clone the repository</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step-2-create-a-virtual-environment">Step 2: Create a virtual environment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step-3-install-dependencies">Step 3: Install dependencies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step-4-configure-environment-variables">Step 4: Configure environment variables</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#detailed-environment-variables">Detailed Environment Variables</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#sentry-dsn">SENTRY_DSN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#django-secret-key">DJANGO_SECRET_KEY</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#django-debug">DJANGO_DEBUG</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#django-allowed-hosts">DJANGO_ALLOWED_HOSTS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#django-middleware">DJANGO_MIDDLEWARE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#django-staticfiles-storage">DJANGO_STATICFILES_STORAGE</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#installation-verification">Installation Verification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#docker-installation">Docker Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#step-1-pull-the-image">Step 1: Pull the image</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step-2-run-the-container">Step 2: Run the container</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick Start Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="technologies.html">Technologies and Programming Languages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="database.html">Database Structure and Data Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interfaces.html">Programming Interfaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="deployment.html">Deployment Procedures and Application Management</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">OC Lettings Site</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Installation Instructions</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/installation.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="installation-instructions">
+<h1>Installation Instructions<a class="headerlink" href="#installation-instructions" title="Link to this heading"></a></h1>
+<section id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading"></a></h2>
+<p>Before installing the application, make sure you have the following installed on your system:</p>
+<ul class="simple">
+<li><p><strong>Python 3.8+</strong> - Main programming language</p></li>
+<li><p><strong>Git</strong> - Version control system</p></li>
+<li><p><strong>Docker</strong> (optional) - For containerization</p></li>
+<li><p><strong>A code editor</strong> - VS Code, PyCharm, or others</p></li>
+</ul>
+</section>
+<section id="local-installation">
+<h2>Local Installation<a class="headerlink" href="#local-installation" title="Link to this heading"></a></h2>
+<section id="step-1-clone-the-repository">
+<h3>Step 1: Clone the repository<a class="headerlink" href="#step-1-clone-the-repository" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/Hedi-Slm/Python-OC-Lettings-FR
+<span class="nb">cd</span><span class="w"> </span>/path/to/Python-OC-Lettings-FR
+</pre></div>
+</div>
+</section>
+<section id="step-2-create-a-virtual-environment">
+<h3>Step 2: Create a virtual environment<a class="headerlink" href="#step-2-create-a-virtual-environment" title="Link to this heading"></a></h3>
+<p><strong>Linux/Mac:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>venv
+<span class="nb">source</span><span class="w"> </span>venv/bin/activate
+</pre></div>
+</div>
+<p><strong>Windows:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>venv
+venv<span class="se">\S</span>cripts<span class="se">\a</span>ctivate
+</pre></div>
+</div>
+</section>
+<section id="step-3-install-dependencies">
+<h3>Step 3: Install dependencies<a class="headerlink" href="#step-3-install-dependencies" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+</pre></div>
+</div>
+</section>
+<section id="step-4-configure-environment-variables">
+<h3>Step 4: Configure environment variables<a class="headerlink" href="#step-4-configure-environment-variables" title="Link to this heading"></a></h3>
+<p>Create a <code class="docutils literal notranslate"><span class="pre">.env</span></code> file at the project root with the following content:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">SENTRY_DSN</span><span class="o">=</span>your_sentry_dsn_here
+<span class="nv">DJANGO_SECRET_KEY</span><span class="o">=</span>your_secret_key_here
+<span class="nv">DJANGO_DEBUG</span><span class="o">=</span>True
+<span class="nv">DJANGO_ALLOWED_HOSTS</span><span class="o">=[</span><span class="s2">&quot;localhost&quot;</span><span class="o">]</span>
+<span class="nv">DJANGO_MIDDLEWARE</span><span class="o">=[</span><span class="s2">&quot;django.middleware.security.SecurityMiddleware&quot;</span>,<span class="w"> </span><span class="s2">&quot;django.contrib.sessions.middleware.SessionMiddleware&quot;</span>,<span class="w"> </span><span class="s2">&quot;django.middleware.common.CommonMiddleware&quot;</span>,<span class="w"> </span><span class="s2">&quot;django.middleware.csrf.CsrfViewMiddleware&quot;</span>,<span class="w"> </span><span class="s2">&quot;django.contrib.auth.middleware.AuthenticationMiddleware&quot;</span>,<span class="w"> </span><span class="s2">&quot;django.contrib.messages.middleware.MessageMiddleware&quot;</span>,<span class="w"> </span><span class="s2">&quot;django.middleware.clickjacking.XFrameOptionsMiddleware&quot;</span><span class="o">]</span>
+<span class="nv">DJANGO_STATICFILES_STORAGE</span><span class="o">=</span>django.contrib.staticfiles.storage.StaticFilesStorage
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Never commit the <code class="docutils literal notranslate"><span class="pre">.env</span></code> file to Git. It contains sensitive information.</p>
+</div>
+</section>
+</section>
+<section id="detailed-environment-variables">
+<h2>Detailed Environment Variables<a class="headerlink" href="#detailed-environment-variables" title="Link to this heading"></a></h2>
+<section id="sentry-dsn">
+<h3>SENTRY_DSN<a class="headerlink" href="#sentry-dsn" title="Link to this heading"></a></h3>
+<p>Sentry configuration URL for error monitoring.</p>
+<ul class="simple">
+<li><p><strong>Development</strong>: Optional (leave empty to disable)</p></li>
+<li><p><strong>Production</strong>: Required</p></li>
+</ul>
+</section>
+<section id="django-secret-key">
+<h3>DJANGO_SECRET_KEY<a class="headerlink" href="#django-secret-key" title="Link to this heading"></a></h3>
+<p>Django secret key for cryptographic security.</p>
+<ul class="simple">
+<li><p><strong>Generation</strong>: <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">-c</span> <span class="pre">'from</span> <span class="pre">django.core.management.utils</span> <span class="pre">import</span> <span class="pre">get_random_secret_key;</span> <span class="pre">print(get_random_secret_key())'</span></code></p></li>
+<li><p><strong>Format</strong>: 50-character alphanumeric string</p></li>
+</ul>
+</section>
+<section id="django-debug">
+<h3>DJANGO_DEBUG<a class="headerlink" href="#django-debug" title="Link to this heading"></a></h3>
+<p>Django debug mode.</p>
+<ul class="simple">
+<li><p><strong>Development</strong>: <code class="docutils literal notranslate"><span class="pre">True</span></code></p></li>
+<li><p><strong>Production</strong>: <code class="docutils literal notranslate"><span class="pre">False</span></code></p></li>
+</ul>
+</section>
+<section id="django-allowed-hosts">
+<h3>DJANGO_ALLOWED_HOSTS<a class="headerlink" href="#django-allowed-hosts" title="Link to this heading"></a></h3>
+<p>List of domains allowed to serve the application.</p>
+<ul class="simple">
+<li><p><strong>Development</strong>: <code class="docutils literal notranslate"><span class="pre">localhost,127.0.0.1</span></code></p></li>
+<li><p><strong>Production</strong>: Your production domain</p></li>
+</ul>
+</section>
+<section id="django-middleware">
+<h3>DJANGO_MIDDLEWARE<a class="headerlink" href="#django-middleware" title="Link to this heading"></a></h3>
+<p>List of Django middlewares to use. The default configuration includes:
+‘whitenoise.middleware.WhiteNoiseMiddleware’ is needed when using whitenoise as a static file server</p>
+</section>
+<section id="django-staticfiles-storage">
+<h3>DJANGO_STATICFILES_STORAGE<a class="headerlink" href="#django-staticfiles-storage" title="Link to this heading"></a></h3>
+<p>Static file storage system.</p>
+<ul class="simple">
+<li><p><strong>Development</strong>: <code class="docutils literal notranslate"><span class="pre">django.contrib.staticfiles.storage.StaticFilesStorage</span></code></p></li>
+<li><p><strong>Production</strong>: <code class="docutils literal notranslate"><span class="pre">whitenoise.storage.CompressedManifestStaticFilesStorage</span></code></p></li>
+</ul>
+</section>
+</section>
+<section id="installation-verification">
+<h2>Installation Verification<a class="headerlink" href="#installation-verification" title="Link to this heading"></a></h2>
+<p>Once installed, you can verify everything works:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Run the development server</span>
+python<span class="w"> </span>manage.py<span class="w"> </span>runserver
+
+<span class="c1"># Run tests</span>
+pytest
+
+<span class="c1"># Check linting</span>
+flake8
+</pre></div>
+</div>
+<p>The application should be accessible at: <a class="reference external" href="http://localhost:8000">http://localhost:8000</a></p>
+</section>
+<section id="docker-installation">
+<h2>Docker Installation<a class="headerlink" href="#docker-installation" title="Link to this heading"></a></h2>
+<p>Alternative for quick setup with Docker:</p>
+<section id="step-1-pull-the-image">
+<h3>Step 1: Pull the image<a class="headerlink" href="#step-1-pull-the-image" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>pull<span class="w"> </span>hedislm/letting_docker:latest
+</pre></div>
+</div>
+</section>
+<section id="step-2-run-the-container">
+<h3>Step 2: Run the container<a class="headerlink" href="#step-2-run-the-container" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>-p<span class="w"> </span><span class="m">8000</span>:8000<span class="w"> </span>^
+<span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;DJANGO_SECRET_KEY=your_secret_key&quot;</span><span class="w"> </span>^
+<span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;DJANGO_DEBUG=False&quot;</span><span class="w"> </span>^
+<span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;DJANGO_ALLOWED_HOSTS=[\&quot;localhost\&quot;,\&quot;127.0.0.1\&quot;]&quot;</span><span class="w"> </span>^
+<span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;DJANGO_MIDDLEWARE=[\&quot;django.middleware.security.SecurityMiddleware\&quot;,\&quot;django.contrib.sessions.middleware.SessionMiddleware\&quot;,\&quot;django.middleware.common.CommonMiddleware\&quot;,\&quot;django.middleware.csrf.CsrfViewMiddleware\&quot;,\&quot;django.contrib.auth.middleware.AuthenticationMiddleware\&quot;,\&quot;django.contrib.messages.middleware.MessageMiddleware\&quot;,\&quot;django.middleware.clickjacking.XFrameOptionsMiddleware\&quot;,\&quot;whitenoise.middleware.WhiteNoiseMiddleware\&quot;]&quot;</span><span class="w"> </span>^
+<span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;DJANGO_STATICFILES_STORAGE=whitenoise.storage.CompressedManifestStaticFilesStorage&quot;</span><span class="w"> </span>^
+<span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;SENTRY_DSN=your_sentry_dsn&quot;</span><span class="w"> </span>^
+<span class="w"> </span>hedislm/letting_docker:latest
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="description.html" class="btn btn-neutral float-left" title="Project Description" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="quickstart.html" class="btn btn-neutral float-right" title="Quick Start Guide" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Hedi.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

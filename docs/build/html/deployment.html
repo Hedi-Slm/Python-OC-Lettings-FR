@@ -1,0 +1,397 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Deployment Procedures and Application Management &mdash; OC Lettings Site 1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=29a6c3e3"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Usage Guide" href="usage.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            OC Lettings Site
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="description.html">Project Description</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation Instructions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick Start Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="technologies.html">Technologies and Programming Languages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="database.html">Database Structure and Data Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interfaces.html">Programming Interfaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage Guide</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Deployment Procedures and Application Management</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#deployment-architecture">Deployment Architecture</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#overview-of-the-ci-cd-pipeline">Overview of the CI/CD Pipeline</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#github-actions-workflow">GitHub Actions Workflow</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#pipeline-configuration">Pipeline Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#job-1-testing-and-validation">Job 1: Testing and Validation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#job-2-containerization">Job 2: Containerization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#job-3-deployment">Job 3: Deployment</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#variables-and-secrets-configuration">Variables and Secrets Configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#github-actions-variables">GitHub Actions Variables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#render-configuration">Render Configuration</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#docker-containerization">Docker Containerization</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#dockerfile-configuration">Dockerfile Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dockerignore-file">.dockerignore File</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#docker-image-management">Docker Image Management</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#deployment-validation">Deployment Validation</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">OC Lettings Site</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Deployment Procedures and Application Management</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/deployment.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="deployment-procedures-and-application-management">
+<h1>Deployment Procedures and Application Management<a class="headerlink" href="#deployment-procedures-and-application-management" title="Link to this heading"></a></h1>
+<p>This section details the deployment architecture, automated procedures, and management of the OC Lettings Site application in production.</p>
+<section id="deployment-architecture">
+<h2>Deployment Architecture<a class="headerlink" href="#deployment-architecture" title="Link to this heading"></a></h2>
+<section id="overview-of-the-ci-cd-pipeline">
+<h3>Overview of the CI/CD Pipeline<a class="headerlink" href="#overview-of-the-ci-cd-pipeline" title="Link to this heading"></a></h3>
+<p>The application uses a modern deployment architecture based on:</p>
+<ul class="simple">
+<li><p><strong>GitHub</strong> - Source code repository and workflow triggering</p></li>
+<li><p><strong>GitHub Actions</strong> - Automated CI/CD pipeline</p></li>
+<li><p><strong>Docker Hub</strong> - Container registry</p></li>
+<li><p><strong>Render</strong> - Cloud hosting platform</p></li>
+</ul>
+</section>
+</section>
+<section id="github-actions-workflow">
+<h2>GitHub Actions Workflow<a class="headerlink" href="#github-actions-workflow" title="Link to this heading"></a></h2>
+<section id="pipeline-configuration">
+<h3>Pipeline Configuration<a class="headerlink" href="#pipeline-configuration" title="Link to this heading"></a></h3>
+<p><strong>File:</strong> <code class="docutils literal notranslate"><span class="pre">.github/workflows/CI-CD.yml</span></code></p>
+<p>The pipeline consists of three main jobs executed sequentially:</p>
+<ol class="arabic simple">
+<li><p><strong>Testing and validation</strong> (on all branches)</p></li>
+<li><p><strong>Containerization</strong> (on the master branch only)</p></li>
+<li><p><strong>Deployment</strong> (on the master branch only)</p></li>
+</ol>
+</section>
+<section id="job-1-testing-and-validation">
+<h3>Job 1: Testing and Validation<a class="headerlink" href="#job-1-testing-and-validation" title="Link to this heading"></a></h3>
+<p><strong>Trigger:</strong> Push or Pull Request on any branch</p>
+<p><strong>Steps:</strong></p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">steps</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/checkout@v4</span>
+
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/setup-python@v4</span>
+<span class="w">    </span><span class="nt">with</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">python-version</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;3.11&#39;</span>
+
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Install dependencies</span>
+<span class="w">    </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">      </span><span class="no">pip install --upgrade pip</span>
+<span class="w">      </span><span class="no">pip install -r requirements.txt</span>
+
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Collect static files</span>
+<span class="w">    </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python manage.py collectstatic --noinput</span>
+
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Run lint</span>
+<span class="w">    </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">flake8 .</span>
+
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Run tests with coverage</span>
+<span class="w">    </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pytest --cov --cov-fail-under=80</span>
+</pre></div>
+</div>
+<p><strong>Success Criteria:</strong></p>
+<ul class="simple">
+<li><p>No flake8 linting errors</p></li>
+<li><p>All pytest tests pass</p></li>
+<li><p>Code coverage ≥ 80%</p></li>
+</ul>
+</section>
+<section id="job-2-containerization">
+<h3>Job 2: Containerization<a class="headerlink" href="#job-2-containerization" title="Link to this heading"></a></h3>
+<p><strong>Trigger:</strong> Success of the testing job AND master branch</p>
+<p><strong>Steps:</strong></p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">build</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">needs</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">test</span>
+<span class="w">  </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">github.ref == &#39;refs/heads/main&#39;</span>
+<span class="w">  </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
+<span class="w">  </span><span class="nt">outputs</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">image-tag</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ steps.build.outputs.tag }}</span>
+
+<span class="w">  </span><span class="nt">steps</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/checkout@v4</span>
+
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Log in to Docker Hub</span>
+<span class="w">      </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker/login-action@v3</span>
+<span class="w">      </span><span class="nt">with</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">username</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ secrets.DOCKERHUB_USERNAME }}</span>
+<span class="w">        </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ secrets.DOCKERHUB_PASSWORD }}</span>
+
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Build and tag Docker image</span>
+<span class="w">      </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
+<span class="w">      </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">        </span><span class="no">TAG=${{ github.sha }}</span>
+<span class="w">        </span><span class="no">echo &quot;tag=$TAG&quot; &gt;&gt; $GITHUB_OUTPUT</span>
+<span class="w">        </span><span class="no">docker build -t ${{ env.DOCKER_IMAGE }}:$TAG -t ${{ env.DOCKER_IMAGE }}:latest .</span>
+
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Push Docker image</span>
+<span class="w">      </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">        </span><span class="no">docker push ${{ env.DOCKER_IMAGE }}:${{ steps.build.outputs.tag }}</span>
+<span class="w">        </span><span class="no">docker push ${{ env.DOCKER_IMAGE }}:latest</span>
+</pre></div>
+</div>
+<p><strong>Results:</strong></p>
+<ul class="simple">
+<li><p>Docker image built and tested</p></li>
+<li><p>Push to Docker Hub with two tags:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">latest</span></code> - Latest stable version</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;commit-sha&gt;</span></code> - Commit-specific version</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="job-3-deployment">
+<h3>Job 3: Deployment<a class="headerlink" href="#job-3-deployment" title="Link to this heading"></a></h3>
+<p><strong>Trigger:</strong> Success of the containerization job</p>
+<p><strong>Steps:</strong></p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">deploy</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">needs</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
+<span class="w">  </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">github.ref == &#39;refs/heads/main&#39;</span>
+<span class="w">  </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
+
+<span class="w">  </span><span class="nt">steps</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Trigger Render deployment</span>
+<span class="w">      </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">        </span><span class="no">curl -X POST &quot;${{ secrets.RENDER_DEPLOY_HOOK }}&quot;</span>
+</pre></div>
+</div>
+<p><strong>Operation:</strong></p>
+<ul class="simple">
+<li><p>Call the Render deployment webhook</p></li>
+<li><p>Render automatically pulls the new image</p></li>
+<li><p>Automatic service restart</p></li>
+</ul>
+</section>
+</section>
+<section id="variables-and-secrets-configuration">
+<h2>Variables and Secrets Configuration<a class="headerlink" href="#variables-and-secrets-configuration" title="Link to this heading"></a></h2>
+<section id="github-actions-variables">
+<h3>GitHub Actions Variables<a class="headerlink" href="#github-actions-variables" title="Link to this heading"></a></h3>
+<p><strong>Repository Variables (public):</strong></p>
+<p>Variables are defined in the repository settings in GitHub.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Environment variables for production</span>
+<span class="nv">DJANGO_ALLOWED_HOSTS_PROD</span><span class="o">=</span><span class="s2">&quot;localhost&quot;</span>
+<span class="nv">DJANGO_DEBUG_PROD</span><span class="o">=</span><span class="s2">&quot;False&quot;</span>
+<span class="nv">DJANGO_MIDDLEWARE_PROD</span><span class="o">=</span><span class="s2">&quot;django.middleware.security.SecurityMiddleware,...&quot;</span>
+<span class="nv">DJANGO_STATICFILES_STORAGE_PROD</span><span class="o">=</span><span class="s2">&quot;whitenoise.storage.CompressedManifestStaticFilesStorage&quot;</span>
+
+<span class="c1"># Docker image</span>
+<span class="nv">DOCKERHUB_IMAGE</span><span class="o">=</span><span class="s2">&quot;hedislm/letting_docker&quot;</span>
+</pre></div>
+</div>
+<p><strong>Repository Secrets (private):</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Docker Hub authentication</span>
+<span class="nv">DOCKERHUB_USERNAME</span><span class="o">=</span><span class="s2">&quot;your_dockerhub_username&quot;</span>
+<span class="nv">DOCKERHUB_PASSWORD</span><span class="o">=</span><span class="s2">&quot;your_dockerhub_password&quot;</span>
+
+<span class="c1"># Django configuration</span>
+<span class="nv">DJANGO_SECRET_KEY</span><span class="o">=</span><span class="s2">&quot;your_django_secret_key&quot;</span>
+
+<span class="c1"># Monitoring</span>
+<span class="nv">SENTRY_DSN</span><span class="o">=</span><span class="s2">&quot;your_sentry_dsn&quot;</span>
+
+<span class="c1"># Render deployment</span>
+<span class="nv">RENDER_DEPLOY_HOOK</span><span class="o">=</span><span class="s2">&quot;your_render_deployment_hook&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="render-configuration">
+<h3>Render Configuration<a class="headerlink" href="#render-configuration" title="Link to this heading"></a></h3>
+<p><strong>Render Environment Variables:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Django production configuration</span>
+<span class="nv">DJANGO_ALLOWED_HOSTS</span><span class="o">=</span><span class="s2">&quot;your-domain.onrender.com&quot;</span>
+<span class="nv">DJANGO_DEBUG</span><span class="o">=</span><span class="s2">&quot;False&quot;</span>
+<span class="nv">DJANGO_SECRET_KEY</span><span class="o">=</span><span class="s2">&quot;your_secret_key&quot;</span>
+<span class="nv">DJANGO_MIDDLEWARE</span><span class="o">=</span><span class="s2">&quot;django.middleware.security.SecurityMiddleware,...&quot;</span>
+<span class="nv">DJANGO_STATICFILES_STORAGE</span><span class="o">=</span><span class="s2">&quot;whitenoise.storage.CompressedManifestStaticFilesStorage&quot;</span>
+
+<span class="c1"># Monitoring and observability</span>
+<span class="nv">SENTRY_DSN</span><span class="o">=</span><span class="s2">&quot;your_sentry_dsn&quot;</span>
+</pre></div>
+</div>
+<p><strong>Render Service Configuration:</strong></p>
+<ul class="simple">
+<li><p><strong>Service type:</strong> Web Service</p></li>
+<li><p><strong>Source:</strong> Docker</p></li>
+<li><p><strong>Docker image:</strong> <code class="docutils literal notranslate"><span class="pre">hedislm/letting_docker:latest</span></code></p></li>
+<li><p><strong>Port:</strong> 8000</p></li>
+<li><p><strong>Start command:</strong> Automatic (defined in Dockerfile)</p></li>
+<li><p><strong>Auto-deploy:</strong> Enabled with webhook</p></li>
+</ul>
+</section>
+</section>
+<section id="docker-containerization">
+<h2>Docker Containerization<a class="headerlink" href="#docker-containerization" title="Link to this heading"></a></h2>
+<section id="dockerfile-configuration">
+<h3>Dockerfile Configuration<a class="headerlink" href="#dockerfile-configuration" title="Link to this heading"></a></h3>
+<p><strong>Optimized Dockerfile:</strong></p>
+<div class="highlight-dockerfile notranslate"><div class="highlight"><pre><span></span><span class="k">FROM</span><span class="w"> </span><span class="s">python:3.11-slim</span>
+
+<span class="c"># Set environment variables</span>
+<span class="k">ENV</span><span class="w"> </span><span class="nv">PYTHONDONTWRITEBYTECODE</span><span class="o">=</span><span class="m">1</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="nv">PYTHONUNBUFFERED</span><span class="o">=</span><span class="m">1</span>
+
+<span class="c"># Set work directory</span>
+<span class="k">WORKDIR</span><span class="w"> </span><span class="s">/app</span>
+
+<span class="c"># Install system dependencies</span>
+<span class="k">RUN</span><span class="w"> </span>apt-get<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>--no-install-recommends<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>build-essential<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>libpq-dev<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>curl<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="o">&amp;&amp;</span><span class="w"> </span>apt-get<span class="w"> </span>clean<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="o">&amp;&amp;</span><span class="w"> </span>rm<span class="w"> </span>-rf<span class="w"> </span>/var/lib/apt/lists/*
+
+<span class="c"># Install Python dependencies</span>
+<span class="k">COPY</span><span class="w"> </span>requirements.txt<span class="w"> </span>.
+<span class="k">RUN</span><span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>pip<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="o">&amp;&amp;</span><span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>--no-cache-dir<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+
+<span class="c"># Copy project files</span>
+<span class="k">COPY</span><span class="w"> </span>.<span class="w"> </span>.
+
+<span class="c"># Collect static files and start server</span>
+<span class="k">CMD</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;sh&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;-c&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;python manage.py collectstatic --noinput &amp;&amp; gunicorn oc_lettings_site.wsgi:application --bind 0.0.0.0:8000&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p><strong>Applied optimizations:</strong></p>
+<ul class="simple">
+<li><p>Lightweight base image (<code class="docutils literal notranslate"><span class="pre">python:3.11-slim</span></code>)</p></li>
+<li><p>Static files collected at build time</p></li>
+<li><p>Gunicorn command optimized for production</p></li>
+</ul>
+</section>
+<section id="dockerignore-file">
+<h3>.dockerignore File<a class="headerlink" href="#dockerignore-file" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>__pycache__/
+*.pyc
+*.pyo
+*.pyd
+venv/
+.env
+</pre></div>
+</div>
+</section>
+<section id="docker-image-management">
+<h3>Docker Image Management<a class="headerlink" href="#docker-image-management" title="Link to this heading"></a></h3>
+<p><strong>Tagging strategy:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">latest</span></code> - Last version deployed in production</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;commit-sha&gt;</span></code> - Specific version for rollback</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>If you want to run a container locally check:</p></li>
+<li><p><a class="reference internal" href="installation.html"><span class="doc">Installation Instructions</span></a></p></li>
+<li><p><a class="reference internal" href="quickstart.html"><span class="doc">Quick Start Guide</span></a></p></li>
+</ul>
+</div>
+</section>
+</section>
+<section id="deployment-validation">
+<h2>Deployment Validation<a class="headerlink" href="#deployment-validation" title="Link to this heading"></a></h2>
+<p>Once code is pushed to GitHub, you will be able to check in real time the status of the deployment in the <strong>Actions</strong> tab.
+Inside this tab you will also be able to view the logs of the deployment and details for each job that has been executed by the pipeline.
+We will also be able access different metrics to monitor the performance of the pipeline.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="usage.html" class="btn btn-neutral float-left" title="Usage Guide" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Hedi.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

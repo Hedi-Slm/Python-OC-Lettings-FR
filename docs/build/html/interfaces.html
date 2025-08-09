@@ -1,0 +1,332 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Programming Interfaces &mdash; OC Lettings Site 1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=29a6c3e3"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Usage Guide" href="usage.html" />
+    <link rel="prev" title="Database Structure and Data Models" href="database.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            OC Lettings Site
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="description.html">Project Description</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation Instructions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick Start Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="technologies.html">Technologies and Programming Languages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="database.html">Database Structure and Data Models</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Programming Interfaces</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#view-architecture">View Architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#url-configuration">URL Configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#main-urls-oc-lettings-site">Main URLs (oc_lettings_site)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#lettings-app-urls">Lettings app URLs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#profiles-app-urls">Profiles app URLs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#main-app-views">Main app views</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#oc-lettings-site-views-py">oc_lettings_site/views.py</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#lettings-app-views">Lettings app views</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#lettings-views-py">lettings/views.py</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#profiles-app-views">Profiles app views</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#profiles-views-py">profiles/views.py</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#error-handling">Error Handling</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#custom-error-pages">Custom error pages</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#admin-interface">Admin Interface</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#django-admin-configuration">Django Admin configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#admin-features">Admin features</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="deployment.html">Deployment Procedures and Application Management</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">OC Lettings Site</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Programming Interfaces</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/interfaces.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="programming-interfaces">
+<h1>Programming Interfaces<a class="headerlink" href="#programming-interfaces" title="Link to this heading"></a></h1>
+<p>This section describes the programming interfaces of the OC Lettings Site application, based on Django’s MVT (Model-View-Template) architecture.</p>
+<section id="view-architecture">
+<h2>View Architecture<a class="headerlink" href="#view-architecture" title="Link to this heading"></a></h2>
+<p>The application primarily uses Django function-based views to serve web pages. No REST API is implemented in this version of the application.</p>
+</section>
+<section id="url-configuration">
+<h2>URL Configuration<a class="headerlink" href="#url-configuration" title="Link to this heading"></a></h2>
+<section id="main-urls-oc-lettings-site">
+<h3>Main URLs (oc_lettings_site)<a class="headerlink" href="#main-urls-oc-lettings-site" title="Link to this heading"></a></h3>
+<p><strong>File:</strong> <code class="docutils literal notranslate"><span class="pre">oc_lettings_site/urls.py</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;index&#39;</span><span class="p">),</span>
+    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;lettings/&#39;</span><span class="p">,</span> <span class="n">include</span><span class="p">(</span><span class="s1">&#39;lettings.urls&#39;</span><span class="p">)),</span>
+    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;profiles/&#39;</span><span class="p">,</span> <span class="n">include</span><span class="p">(</span><span class="s1">&#39;profiles.urls&#39;</span><span class="p">)),</span>
+    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;admin/&#39;</span><span class="p">,</span> <span class="n">admin</span><span class="o">.</span><span class="n">site</span><span class="o">.</span><span class="n">urls</span><span class="p">),</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p><strong>Available URLs:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">/</span></code> — Main home page</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">/lettings/</span></code> — Includes URLs from the lettings app</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">/profiles/</span></code> — Includes URLs from the profiles app</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">/admin/</span></code> — Django admin interface</p></li>
+</ul>
+</section>
+<section id="lettings-app-urls">
+<h3>Lettings app URLs<a class="headerlink" href="#lettings-app-urls" title="Link to this heading"></a></h3>
+<p><strong>File:</strong> <code class="docutils literal notranslate"><span class="pre">lettings/urls.py</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">app_name</span> <span class="o">=</span> <span class="s1">&#39;lettings&#39;</span>
+
+<span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;index&#39;</span><span class="p">),</span>
+    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;&lt;int:letting_id&gt;/&#39;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">letting</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;letting&#39;</span><span class="p">),</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p><strong>Namespaced URLs:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">/lettings/</span></code> → <code class="docutils literal notranslate"><span class="pre">lettings:index</span></code> — Listing of lettings</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">/lettings/&lt;int:letting_id&gt;/</span></code> → <code class="docutils literal notranslate"><span class="pre">lettings:letting</span></code> — Letting detail</p></li>
+</ul>
+</section>
+<section id="profiles-app-urls">
+<h3>Profiles app URLs<a class="headerlink" href="#profiles-app-urls" title="Link to this heading"></a></h3>
+<p><strong>File:</strong> <code class="docutils literal notranslate"><span class="pre">profiles/urls.py</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">app_name</span> <span class="o">=</span> <span class="s1">&#39;profiles&#39;</span>
+
+<span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;index&#39;</span><span class="p">),</span>
+    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;&lt;str:username&gt;/&#39;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">profile</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;profile&#39;</span><span class="p">),</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p><strong>Namespaced URLs:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">/profiles/</span></code> → <code class="docutils literal notranslate"><span class="pre">profiles:index</span></code> — List of profiles</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">/profiles/&lt;str:username&gt;/</span></code> → <code class="docutils literal notranslate"><span class="pre">profiles:profile</span></code> — Profile detail</p></li>
+</ul>
+</section>
+</section>
+<section id="main-app-views">
+<h2>Main app views<a class="headerlink" href="#main-app-views" title="Link to this heading"></a></h2>
+<section id="oc-lettings-site-views-py">
+<h3>oc_lettings_site/views.py<a class="headerlink" href="#oc-lettings-site-views-py" title="Link to this heading"></a></h3>
+<p><strong>Index view (Home page)</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">index</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;index.html&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Associated template:</strong> <code class="docutils literal notranslate"><span class="pre">templates/index.html</span></code></p>
+<p><strong>Purpose:</strong> Home page with navigation to other sections</p>
+</section>
+</section>
+<section id="lettings-app-views">
+<h2>Lettings app views<a class="headerlink" href="#lettings-app-views" title="Link to this heading"></a></h2>
+<section id="lettings-views-py">
+<h3>lettings/views.py<a class="headerlink" href="#lettings-views-py" title="Link to this heading"></a></h3>
+<p><strong>Index view (Lettings list)</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">index</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+
+    <span class="n">lettings_list</span> <span class="o">=</span> <span class="n">Letting</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+    <span class="n">context</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;lettings_list&#39;</span><span class="p">:</span> <span class="n">lettings_list</span><span class="p">}</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;lettings/index.html&#39;</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Letting view (Letting detail)</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">letting</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">letting_id</span><span class="p">):</span>
+
+    <span class="n">letting</span> <span class="o">=</span> <span class="n">get_object_or_404</span><span class="p">(</span><span class="n">Letting</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="n">letting_id</span><span class="p">)</span>
+    <span class="n">context</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;title&#39;</span><span class="p">:</span> <span class="n">letting</span><span class="o">.</span><span class="n">title</span><span class="p">,</span> <span class="s1">&#39;address&#39;</span><span class="p">:</span> <span class="n">letting</span><span class="o">.</span><span class="n">address</span><span class="p">}</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;lettings/letting.html&#39;</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Associated templates:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">lettings/templates/lettings/index.html</span></code> — Lettings list</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">lettings/templates/lettings/letting.html</span></code> — Letting detail</p></li>
+</ul>
+</section>
+</section>
+<section id="profiles-app-views">
+<h2>Profiles app views<a class="headerlink" href="#profiles-app-views" title="Link to this heading"></a></h2>
+<section id="profiles-views-py">
+<h3>profiles/views.py<a class="headerlink" href="#profiles-views-py" title="Link to this heading"></a></h3>
+<p><strong>Index view (Profiles list)</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">index</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="n">profiles_list</span> <span class="o">=</span> <span class="n">Profile</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+    <span class="n">context</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;profiles_list&#39;</span><span class="p">:</span> <span class="n">profiles_list</span><span class="p">}</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;profiles/index.html&#39;</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Profile view (Profile detail)</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">profile</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">username</span><span class="p">):</span>
+
+    <span class="n">profile</span> <span class="o">=</span> <span class="n">get_object_or_404</span><span class="p">(</span><span class="n">Profile</span><span class="p">,</span> <span class="n">user__username</span><span class="o">=</span><span class="n">username</span><span class="p">)</span>
+    <span class="n">context</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;profile&#39;</span><span class="p">:</span> <span class="n">profile</span><span class="p">}</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;profiles/profile.html&#39;</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Associated templates:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">profiles/templates/profiles/index.html</span></code> — Profiles list</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">profiles/templates/profiles/profile.html</span></code> — Profile detail</p></li>
+</ul>
+</section>
+</section>
+<section id="error-handling">
+<h2>Error Handling<a class="headerlink" href="#error-handling" title="Link to this heading"></a></h2>
+<section id="custom-error-pages">
+<h3>Custom error pages<a class="headerlink" href="#custom-error-pages" title="Link to this heading"></a></h3>
+<p>The application handles common HTTP errors with custom pages.</p>
+<p><strong>404 - Page not found</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># In oc_lettings_site/views.py</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">handler404</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">exception</span><span class="p">):</span>
+
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;404.html&#39;</span><span class="p">,</span> <span class="n">status</span><span class="o">=</span><span class="mi">404</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>500 - Server error</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># In oc_lettings_site/views.py</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">handler500</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;500.html&#39;</span><span class="p">,</span> <span class="n">status</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Configuration in urls.py:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Error handler configuration</span>
+<span class="n">handler404</span> <span class="o">=</span> <span class="s1">&#39;oc_lettings_site.views.handler404&#39;</span>
+<span class="n">handler500</span> <span class="o">=</span> <span class="s1">&#39;oc_lettings_site.views.handler500&#39;</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="admin-interface">
+<h2>Admin Interface<a class="headerlink" href="#admin-interface" title="Link to this heading"></a></h2>
+<section id="django-admin-configuration">
+<h3>Django Admin configuration<a class="headerlink" href="#django-admin-configuration" title="Link to this heading"></a></h3>
+<p>The app uses Django’s built-in admin interface for data management.</p>
+<p>We are using a minimal set of features for this version of the application.
+<code class="docutils literal notranslate"><span class="pre">oc_lettings_site/admin.py</span></code> configuration:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">django.contrib</span><span class="w"> </span><span class="kn">import</span> <span class="n">admin</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">lettings.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">Letting</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">lettings.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">Address</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">profiles.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">Profile</span>
+
+
+<span class="n">admin</span><span class="o">.</span><span class="n">site</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">Letting</span><span class="p">)</span>
+<span class="n">admin</span><span class="o">.</span><span class="n">site</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">Address</span><span class="p">)</span>
+<span class="n">admin</span><span class="o">.</span><span class="n">site</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">Profile</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="admin-features">
+<h3>Admin features<a class="headerlink" href="#admin-features" title="Link to this heading"></a></h3>
+<p>Possible features that can be use in Django Admin interface:</p>
+<ul class="simple">
+<li><p>Paginated lists</p></li>
+<li><p>Keyword search</p></li>
+<li><p>Sidebar filters</p></li>
+<li><p>Bulk edit actions</p></li>
+<li><p>Full CRUD interface</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="database.html" class="btn btn-neutral float-left" title="Database Structure and Data Models" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="usage.html" class="btn btn-neutral float-right" title="Usage Guide" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Hedi.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
