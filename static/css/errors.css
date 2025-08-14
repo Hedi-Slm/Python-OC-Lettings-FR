@@ -50,22 +50,22 @@
 }
 
 .error-actions .btn-primary {
-    background-color: #007bff;
-    border-color: #007bff;
+    background-color: #a22b02;
+    border-color: #a22b02;
 }
 
 .error-actions .btn-primary:hover {
-    background-color: #0056b3;
-    border-color: #0056b3;
+    background-color: #6e241a;
+    border-color: #6e241a;
 }
 
 .error-actions .btn-outline-primary {
-    color: #007bff;
-    border-color: #007bff;
+    color: #a22b02;
+    border-color: #a22b02;
 }
 
 .error-actions .btn-outline-primary:hover {
-    background-color: #007bff;
-    border-color: #007bff;
+    background-color: #a22b02;
+    border-color: #a22b02;
     color: white;
 }
