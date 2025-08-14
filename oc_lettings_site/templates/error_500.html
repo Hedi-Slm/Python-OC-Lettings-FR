@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Server Error{% endblock title %}
+
+{% block content %}
+<link href="{% static 'css/error-pages.css' %}" rel="stylesheet" />
+
+<div class="container px-5 py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8 text-center">
+            <div class="error-container">
+                <div class="error-code">500</div>
+                <h1 class="error-title mb-4">Internal Server Error</h1>
+                <p class="error-description mb-4">
+                    Something went wrong on our server.
+                    <br>We've been notified and are working to fix this issue.
+                    <br>Please try again in a few moments.
+                </p>
+                <div class="error-actions">
+                    <a href="{% url 'index' %}" class="btn btn-primary btn-lg me-3">
+                        <i class="fas fa-home me-2"></i>Back to Home
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
