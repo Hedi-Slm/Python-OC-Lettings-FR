@@ -109,6 +109,8 @@ STATIC_ROOT = BASE_DIR / "staticfiles"
 
 STATIC_URL = '/static/'
 
+STATICFILES_DIRS = [BASE_DIR / "static"]
+
 STATICFILES_STORAGE = config('DJANGO_STATICFILES_STORAGE')
 
 # Sentry configuration
