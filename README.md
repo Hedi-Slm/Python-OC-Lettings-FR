@@ -98,6 +98,9 @@ Variables GitHub Actions : `DOCKERHUB_IMAGE`, `DJANGO_ALLOWED_HOSTS_PROD`, `DJAN
 Secrets GitHub Actions : `DOCKERHUB_USERNAME`, `DOCKERHUB_PASSWORD`, `DJANGO_SECRET_KEY`, `SENTRY_DSN`, `RENDER_DEPLOY_HOOK`.
 
 Render : Configuré en “Web Service” utilisant l’image Docker :latest, port 8000, auto-déploiement activé.
+Les variables et secrets suivantes sont aussi necessaires a ajouter au service Render dans l’onglet “Environnement” :
+`DJANGO_ALLOWED_HOSTS`, `DJANGO_DEBUG`, `DJANGO_MIDDLEWARE`, `DJANGO_SECRET_KEY`, `DJANGO_STATICFILES_STORAGE`, `SENTRY_DSN`
+
 
 ### Déploiement manuel
 
@@ -106,3 +109,7 @@ Pousser vos modifications sur la branche `main`.
 Vérifier l’exécution du pipeline dans l’onglet Actions de GitHub.
 
 Confirmer que le service Render est à jour et que le site fonctionne (fichiers statiques chargés, DEBUG=False).
+
+#### Docker en local
+
+Si vous comptez utiliser l'image Docker sur votre machine, il vous sera necessaire d'ajouter les variables et secrets lors de l'execution de la commande `docker run`.
