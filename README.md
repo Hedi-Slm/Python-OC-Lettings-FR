@@ -75,3 +75,34 @@ Utilisation de PowerShell, comme ci-dessus sauf :
 
 - Pour activer l'environnement virtuel, `.\venv\Scripts\Activate.ps1` 
 - Remplacer `which <my-command>` par `(Get-Command <my-command>).Path`
+
+
+
+## Déploiement
+
+Le site est déployé automatiquement en production via un pipeline CI/CD configuré avec GitHub Actions, Docker Hub et Render.
+
+### Fonctionnement
+
+Tests & linting : À chaque push, la pipeline exécute le linting `flake8`, les tests `pytest --cov --cov-fail-under=80` vérifie que la couverture ≥ 80 %.
+
+Conteneurisation : Sur la branche main uniquement, une image Docker est construite (utilise le fichier `Dockerfile`) et poussée sur Docker Hub avec deux tags : latest et le hash du commit.
+
+Mise en production : Après la création de l’image, Render est déclenché via un webhook et met automatiquement à jour le service avec la nouvelle version.
+Render utilise automatiquement le tag `latest`.
+
+### Configuration requise
+
+Variables GitHub Actions : `DOCKERHUB_IMAGE`, `DJANGO_ALLOWED_HOSTS_PROD`, `DJANGO_DEBUG_PROD`, `DJANGO_STATICFILES_STORAGE_PROD`, `DJANGO_MIDDLEWARE_PROD`.
+
+Secrets GitHub Actions : `DOCKERHUB_USERNAME`, `DOCKERHUB_PASSWORD`, `DJANGO_SECRET_KEY`, `SENTRY_DSN`, `RENDER_DEPLOY_HOOK`.
+
+Render : Configuré en “Web Service” utilisant l’image Docker :latest, port 8000, auto-déploiement activé.
+
+### Déploiement manuel
+
+Pousser vos modifications sur la branche `main`.
+
+Vérifier l’exécution du pipeline dans l’onglet Actions de GitHub.
+
+Confirmer que le service Render est à jour et que le site fonctionne (fichiers statiques chargés, DEBUG=False).
