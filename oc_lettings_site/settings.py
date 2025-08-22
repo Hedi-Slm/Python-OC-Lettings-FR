@@ -160,12 +160,14 @@ LOGGING = {
             'propagate': True,
         },
         'lettings': {
-            'handlers': ['console'],
+            'handlers': ['console', 'sentry'],
             'level': 'INFO',
+            'propagate': False,
         },
         'profiles': {
-            'handlers': ['console'],
+            'handlers': ['console', 'sentry'],
             'level': 'INFO',
+            'propagate': False,
         },
     },
 }
